@@ -1,0 +1,47 @@
+cms_manual_init: true
+
+backend:
+  name: github
+  repo: claudioquirozipi/cquirozipi
+  branch: main
+
+media_folder: "public/img"
+public_folder: "img"
+logo_url: "https://deluxe-sfogliatella-257244.netlify.app/vercel.svg"
+locale: es
+
+collections:
+  - name: products
+    label: Productos
+    label_singular: Producto
+    description: lista detallada de productos.
+    create: true
+    folder: content/product
+    slug: "{{title}}"
+    fields:
+      - { label: "Producto", name: "title", widget: "string" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Descripción", name: "description", widget: "markdown" }
+      - { label: "Precio", name: "price", widget: "number", min: 0, step: 1 }
+      - { label: "Availability", name: "availability", widget: "bollean" }
+      - {
+          name: categories,
+          label: Categorías,
+          widget: relation,
+          multiple: true,
+          min: 0,
+          collection: categories,
+          search_fields: ["title"],
+          value_field: id,
+          display_fields: ["title"],
+          required: false,
+        }
+  - name: categories
+    label: Categorías
+    label_singular: Categoría
+    description: Lista de categorías.
+    create: true
+    folder: content/categories
+    slug: "{{title}}"
+    fields:
+      - { label: "Categoría", name: "title", widget: "string" }
