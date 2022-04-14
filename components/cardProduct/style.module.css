@@ -1,0 +1,31 @@
+.card {
+  background-color: var(--white);
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}
+
+.image {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  
+}
+
+.title {
+  padding: 0 2rem;
+  margin: 0;
+}
+.subTextContainer {
+  padding: 0 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  margin: 0;
+  font-size: 2rem;
+}

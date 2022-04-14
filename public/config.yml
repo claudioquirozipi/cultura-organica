@@ -21,9 +21,6 @@ collections:
     fields:
       - { label: "Producto", name: "title", widget: "string" }
       - { label: "Imagen", name: "imagen", widget: "image" }
-      - { label: "Descripción", name: "description", widget: "markdown" }
-      - { label: "Precio", name: "price", widget: "number", min: 0, step: 1 }
-      - { label: "Availability", name: "availability", widget: "bollean" }
       - {
           name: categories,
           label: Categorías,
@@ -32,10 +29,19 @@ collections:
           min: 0,
           collection: categories,
           search_fields: ["title"],
-          value_field: id,
+          value_field: title,
           display_fields: ["title"],
           required: false,
         }
+      - { label: "Precio", name: "price", widget: "number", min: 0, step: 1 }
+      - {
+          label: "¿Está disponible?",
+          name: "availability",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Descripción", name: "description", widget: "markdown" }
+
   - name: categories
     label: Categorías
     label_singular: Categoría

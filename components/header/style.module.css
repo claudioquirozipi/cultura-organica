@@ -1,0 +1,16 @@
+.header {
+    padding: 1rem var(--margin-container);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--background-primary);
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    height: 3rem;
+    cursor: pointer;
+}

@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+:root {
+  --background-primary: #C2D9BA;
+  --background-secondary: #D0B89A;
+  --background-third: #262222;
+
+  --primary: white;
+  --secondary: brown;
+  --third: #E08821;
+
+  --white: white;
+  --margin-container: 10%;
+}

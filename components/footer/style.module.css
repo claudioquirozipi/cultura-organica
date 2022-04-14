@@ -1,0 +1,12 @@
+.footer {
+    background-color: var(--background-third);
+    min-height: 8rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 2rem var(--margin-container);
+}
+
+.information {
+    color: var(--third);
+    margin: 0;
+}
