@@ -10,6 +10,7 @@ const Footer = () => {
       </div>
       <div>
         <p className={style.information}>redes sociales</p>
+        <p className={style.information}>Facebook</p>
       </div>
     </footer>
   );
