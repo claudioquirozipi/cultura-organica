@@ -2,7 +2,7 @@ cms_manual_init: true
 
 backend:
   name: github
-  repo: claudioquirozipi/cquirozipi
+  repo: claudioquirozipi/cultura-organica
   branch: main
 
 media_folder: "public/img"
