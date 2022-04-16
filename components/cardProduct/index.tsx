@@ -1,4 +1,3 @@
-import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 
 import { CardProductProps } from "./interface";
@@ -15,17 +14,27 @@ const CardProduct = (props: CardProductProps) => {
         alt={product.data.title}
       />
       <h2 className={style.title}>{product.data.title}</h2>
+      <ul>
+        {stringToArray(product.data.categories).map((c, i) => (
+          <li key={i}>{c}</li>
+        ))}
+      </ul>
       <div className={style.subTextContainer}>
         <p className={style.price}>/S {product.data.price}</p>
+        <p>{product.data.availability ? "disponible" : "agotado"}</p>
 
         <Link href={`/${product.slug}`}>Ver más</Link>
       </div>
     </div>
   );
+
+  function stringToArray(text: string) {
+    const newText = JSON.stringify(text)
+      .replaceAll("[", "")
+      .replaceAll("]", "")
+      .replaceAll('"', "");
+    return newText.split(",");
+  }
 };
-function stringToArray(category: string) {
-  const response = category.replaceAll("[", "").replaceAll("]", "").split(",");
-  return response;
-}
 
 export default CardProduct;
