@@ -3,7 +3,7 @@ import { Data } from "./homePage";
 export interface Product {
   title: string;
   imagen: string;
-  categories: string;
+  categories: any;
   price: number;
   availability: boolean;
   description: string;
