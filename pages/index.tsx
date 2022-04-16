@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import type { GetStaticProps, NextPage } from "next";
 
 import { getMarkdown } from "../utils/functions";
@@ -8,10 +8,14 @@ import CardProduct from "../components/cardProduct";
 import FilterProducts from "../components/filter";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/layout";
+import { MyContext } from "../utils/store";
 
 const Home: NextPage<HomeProps> = (props) => {
   const { products, categories } = props;
 
+  const store = useContext(MyContext);
+
+  // console.log("store", store.state.shoppingCartProducts);
   const [filter, setFilter] = useState<Filter>({});
 
   function productsFiltered(products: Data[]) {
