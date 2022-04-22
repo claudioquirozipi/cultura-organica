@@ -29,17 +29,22 @@ const CardProduct = (props: CardProductProps) => {
 
         <Link href={`/${product.slug}`}>Ver más</Link>
       </div>
-      <button onClick={() => store.dispatch(myAction.removeProduct(product))}>
-        -
-      </button>
-      {printAmount(store.state.shoppingCartProducts)}
-      <button onClick={() => store.dispatch(myAction.addProduct(product))}>
-        +
-      </button>
+      {product.data.availability && (
+        <>
+          <button
+            onClick={() => store.dispatch(myAction.removeProduct(product))}
+          >
+            -
+          </button>
+          {printAmount(store.state.shoppingCartProducts)}
+          <button onClick={() => store.dispatch(myAction.addProduct(product))}>
+            +
+          </button>
+        </>
+      )}
     </div>
   );
   function printAmount(shoppingCartProducts: DataProduct[]) {
-    console.log("fff", shoppingCartProducts);
     const tempResponse = shoppingCartProducts.filter(
       (sp: DataProduct) => sp?.slug === product.slug
     )[0]?.amount;

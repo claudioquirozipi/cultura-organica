@@ -15,7 +15,6 @@ const Home: NextPage<HomeProps> = (props) => {
 
   const store = useContext(MyContext);
 
-  // console.log("store", store.state.shoppingCartProducts);
   const [filter, setFilter] = useState<Filter>({});
 
   function productsFiltered(products: Data[]) {

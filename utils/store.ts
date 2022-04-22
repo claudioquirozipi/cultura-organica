@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { string } from "yup";
 import { Data } from "./interface/homePage";
 import { Product } from "./interface/products";
 
@@ -17,6 +16,20 @@ export const initialState: InitialState = {
   message: "",
 };
 
+const getMessage = (shoppingCartProducts: DataProduct[]) => {
+  let totalPrice = 0;
+  let totalProducts = 0;
+  const message = shoppingCartProducts.map((scp) => {
+    totalPrice += scp.data.price * scp.amount;
+    totalProducts += scp.amount;
+    return `=>${scp.data.title} /S. ${scp.data.price} => ${scp.amount}-%0A`;
+  });
+  return [
+    `Hola Deseo comprar estos productos: %0A,${message}Total a pagar: ${totalPrice} %0A Total de productos: ${totalProducts}`,
+    totalPrice,
+    totalProducts,
+  ];
+};
 export const MyContext = createContext<any>({});
 export function reducer(state: InitialState, action: any) {
   switch (action.type) {
@@ -41,7 +54,13 @@ export function reducer(state: InitialState, action: any) {
             : sc
         );
       }
-      return { shoppingCartProducts: response };
+      const [message, totalPrice, totalProducts] = getMessage(response);
+      return {
+        shoppingCartProducts: response,
+        message,
+        totalPrice,
+        totalProducts,
+      };
 
     case "removeProduct":
       const newShoppingCartProductsRemove: DataProduct[] =
@@ -71,10 +90,25 @@ export function reducer(state: InitialState, action: any) {
       } else {
         responseRemove = [...state.shoppingCartProducts];
       }
-
-      return { shoppingCartProducts: responseRemove };
+      const [message2, totalPrice2, totalProducts2] =
+        getMessage(responseRemove);
+      return {
+        shoppingCartProducts: responseRemove,
+        message: message2,
+        totalPrice: totalPrice2,
+        totalProducts: totalProducts2,
+      };
     case "removeAllProducts":
-      return {};
+      const newResponse = state.shoppingCartProducts.filter(
+        (sc: DataProduct) => sc.slug !== action.payload
+      );
+      const [message3, totalPrice3, totalProducts3] = getMessage(newResponse);
+      return {
+        shoppingCartProducts: newResponse,
+        message: message3,
+        totalPrice: totalPrice3,
+        totalProducts: totalProducts3,
+      };
     default:
       throw new Error();
   }
