@@ -1,16 +1,17 @@
 .header {
-    padding: 1rem var(--margin-container);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 1rem var(--margin-container);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    background-color: var(--background-primary);
-    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-    position: sticky;
-    top: 0;
+  background-color: var(--background-primary);
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .logo {
-    height: 3rem;
-    cursor: pointer;
+  height: 3rem;
+  cursor: pointer;
 }
