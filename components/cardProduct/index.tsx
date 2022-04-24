@@ -29,7 +29,7 @@ const CardProduct = (props: CardProductProps) => {
         />
       ) : (
         <div className={style.image}>
-          <Image
+          <img
             src={`/${product.data.imagen}`}
             alt={product.data.title}
             width={110}

@@ -23,7 +23,7 @@ const ButtonBuy = () => {
       rel="noreferrer"
       href={`https://wa.me/${phoneNumber()}?text=${store.state.message}`}
     >
-      <Image src={"/socialmedia/whatsapp.png"} width={70} height={70} />
+      <img src={"/socialmedia/whatsapp.png"} width={70} height={70} />
     </a>
   ) : null;
 };
