@@ -6,6 +6,7 @@ import { DataProduct, myAction, MyContext } from "../../utils/store";
 
 import { CardProductProps } from "./interface";
 import style from "./style.module.css";
+import Image from "next/image";
 
 const CardProduct = (props: CardProductProps) => {
   const { product } = props;
@@ -18,11 +19,25 @@ const CardProduct = (props: CardProductProps) => {
         !product.data.availability && style.cardDisable
       }`}
     >
-      <img
-        className={style.image}
-        src={product.data.imagen}
-        alt={product.data.title}
-      />
+      {product.data.imagen.includes("http") ? (
+        <img
+          className={style.image}
+          src={product.data.imagen}
+          alt={product.data.title}
+          width={110}
+          height={110}
+        />
+      ) : (
+        <div className={style.image}>
+          <Image
+            src={`/${product.data.imagen}`}
+            alt={product.data.title}
+            width={110}
+            height={110}
+          />
+        </div>
+      )}
+
       <ul className={style.chipGroup}>
         {stringToArray(product.data.categories).map((c, i) => (
           <li key={i} className={style.chip}>
@@ -35,7 +50,6 @@ const CardProduct = (props: CardProductProps) => {
       </h2>
 
       <p className={style.price}>/S {product.data.price}</p>
-      {/* <p>{product.data.availability ? "disponible" : "agotado"}</p> */}
 
       {product.data.availability && (
         <>

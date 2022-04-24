@@ -1,3 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faArrowsLeftRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { Filter, FilterProductsProps } from "./interface";
@@ -24,14 +29,14 @@ const FilterProducts = (props: FilterProductsProps) => {
     };
     if (!titleFilter) delete newFilter.text;
     if (minFilter > maxFilter) {
-      newFilter.min = newFilter.max;
-      setMinFilter(maxFilter);
+      newFilter.max = newFilter.min;
+      setMaxFilter(minFilter);
     }
     if (!isPriceFilter) {
       delete newFilter.min;
       delete newFilter.max;
     }
-    if (!isCategoriesFilter) delete newFilter.categories;
+    // if (!isCategoriesFilter) delete newFilter.categories;
 
     for (const property in categoriesFilter) {
       if (categoriesFilter[property]) {
@@ -59,47 +64,37 @@ const FilterProducts = (props: FilterProductsProps) => {
 
   return (
     <form className={style.form}>
-      <div className={style.row}>
-        <label className={style.label} htmlFor="texto">
-          Buscar por:
-        </label>
+      <label className={style.labelText} htmlFor="texto">
         <input
           type="text"
           id="texto"
           value={titleFilter}
           onChange={(e) => setTitleFilter(e.target.value)}
+          className={style.inputText}
         />
-      </div>
-      <div className={style.row}>
-        <label className={style.label} htmlFor={"availability"}>
-          <input
-            className={style.checkbox}
-            type="checkbox"
-            name="availability"
-            id="availability"
-            checked={isAvailability}
-            onChange={(e) => setIsAvailability(e.target.checked)}
-          />
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          color="var(--primary)"
+          width="20px"
+          height="20px"
+        />
+      </label>
+      <div>
+        <input
+          className={style.checkbox}
+          type="checkbox"
+          name="availability"
+          id="availability"
+          checked={isAvailability}
+          onChange={(e) => setIsAvailability(e.target.checked)}
+        />
+        <label className={style.labelCheckbox} htmlFor={"availability"}>
           Disponibles
         </label>
       </div>
       <div className={style.row}>
-        <label className={style.label} htmlFor={"range"}>
-          <input
-            className={style.checkbox}
-            type="checkbox"
-            name="range"
-            id="range"
-            checked={isPriceFilter}
-            onChange={(e) => setIsPriceFilter(e.target.checked)}
-          />
-          Rango de Precio
-        </label>
         {isPriceFilter && (
           <div className={style.containerPrice}>
-            <label className={style.label} htmlFor="min">
-              Minimo:
-            </label>
             <input
               className={style.inputNumber}
               type="number"
@@ -108,9 +103,11 @@ const FilterProducts = (props: FilterProductsProps) => {
               value={minFilter}
               onChange={(e) => setMinFilter(parseInt(e.target.value))}
             />
-            <label className={style.label} htmlFor="max">
-              Máximo:
-            </label>
+            <FontAwesomeIcon
+              icon={faArrowsLeftRight}
+              width="20px"
+              height="20px"
+            />
             <input
               className={style.inputNumber}
               type="number"
@@ -122,41 +119,41 @@ const FilterProducts = (props: FilterProductsProps) => {
           </div>
         )}
       </div>
-
-      <div className={style.row}>
-        <label className={style.label} htmlFor={"categories"}>
-          <input
-            className={style.checkbox}
-            type="checkbox"
-            name="categories"
-            id="categories"
-            checked={isCategoriesFilter}
-            onChange={(e) => setIsCategoriesFilter(e.target.checked)}
-          />
-          Categorías
+      <div>
+        <input
+          className={style.checkbox}
+          type="checkbox"
+          name="range"
+          id="range"
+          checked={isPriceFilter}
+          onChange={(e) => setIsPriceFilter(e.target.checked)}
+        />
+        <label className={style.labelCheckbox} htmlFor={"range"}>
+          Rango de Precio
         </label>
-        {isCategoriesFilter && (
+      </div>
+
+      <div className={style.categoriesContainer}>
+        {categories.map((c, i) => (
           <>
-            {categories.map((c, i) => (
-              <label
-                className={style.label}
-                key={i}
-                htmlFor={`checkbox-${c.data.title}`}
-              >
-                <input
-                  className={style.checkbox}
-                  type="checkbox"
-                  name={c.data.title}
-                  id={`checkbox-${c.data.title}`}
-                  value={c.data.title}
-                  checked={categoriesFilter.checked}
-                  onChange={onChangeCategories}
-                />
-                {c.data.title}
-              </label>
-            ))}
+            <input
+              className={style.checkbox}
+              type="checkbox"
+              name={c.data.title}
+              id={`checkbox-${c.data.title}`}
+              value={c.data.title}
+              checked={categoriesFilter.checked}
+              onChange={onChangeCategories}
+            />
+            <label
+              className={style.labelCheckbox}
+              key={i}
+              htmlFor={`checkbox-${c.data.title}`}
+            >
+              {c.data.title}
+            </label>
           </>
-        )}
+        ))}
       </div>
     </form>
   );

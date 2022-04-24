@@ -9,6 +9,7 @@ import FilterProducts from "../components/filter";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/layout";
 import { MyContext } from "../utils/store";
+import ButtonBuy from "../components/buttonBuy";
 
 const Home: NextPage<HomeProps> = (props) => {
   const { products, categories } = props;
@@ -46,6 +47,7 @@ const Home: NextPage<HomeProps> = (props) => {
           <CardProduct key={i} product={product} />
         ))}
       </div>
+      <ButtonBuy />
     </Layout>
   );
 
