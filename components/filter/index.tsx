@@ -79,19 +79,21 @@ const FilterProducts = (props: FilterProductsProps) => {
           height="20px"
         />
       </label>
+
       <div>
         <input
           className={style.checkbox}
           type="checkbox"
-          name="availability"
-          id="availability"
-          checked={isAvailability}
-          onChange={(e) => setIsAvailability(e.target.checked)}
+          name="range"
+          id="range"
+          checked={isPriceFilter}
+          onChange={(e) => setIsPriceFilter(e.target.checked)}
         />
-        <label className={style.labelCheckbox} htmlFor={"availability"}>
-          Disponibles
+        <label className={style.labelCheckbox} htmlFor={"range"}>
+          Rango de Precio
         </label>
       </div>
+
       <div className={style.row}>
         {isPriceFilter && (
           <div className={style.containerPrice}>
@@ -119,17 +121,18 @@ const FilterProducts = (props: FilterProductsProps) => {
           </div>
         )}
       </div>
+
       <div>
         <input
           className={style.checkbox}
           type="checkbox"
-          name="range"
-          id="range"
-          checked={isPriceFilter}
-          onChange={(e) => setIsPriceFilter(e.target.checked)}
+          name="availability"
+          id="availability"
+          checked={isAvailability}
+          onChange={(e) => setIsAvailability(e.target.checked)}
         />
-        <label className={style.labelCheckbox} htmlFor={"range"}>
-          Rango de Precio
+        <label className={style.labelCheckbox} htmlFor={"availability"}>
+          Disponibles
         </label>
       </div>
 

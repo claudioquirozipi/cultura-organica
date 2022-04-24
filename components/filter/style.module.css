@@ -5,13 +5,18 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+@media (min-width: 765px) {
+  .form {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (min-width: 1020px) {
   .form {
-    grid-template-columns: 1fr repeat(3, auto);
+    grid-template-columns: 6fr repeat(3, 1fr);
   }
 }
 .row {
-  width: 10rem;
+  width: 100%;
 }
 .labelText {
   display: flex;
