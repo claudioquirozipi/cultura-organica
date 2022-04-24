@@ -20,6 +20,7 @@ const ButtonBuy = () => {
     <a
       target="_blank"
       className={style.container}
+      rel="noopener"
       href={`https://wa.me/${phoneNumber()}?text=${store.state.message}`}
     >
       <Image src={"/socialmedia/whatsapp.png"} width={70} height={70} />
