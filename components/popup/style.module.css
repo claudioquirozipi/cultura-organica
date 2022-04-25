@@ -16,6 +16,7 @@
 
 .popup {
   height: 100vh;
+  max-height: 100vh;
   width: 23rem;
   background: var(--contrast);
   padding: 1rem;

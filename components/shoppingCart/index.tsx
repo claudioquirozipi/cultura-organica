@@ -13,8 +13,6 @@ const ShoppingCart = () => {
   const store = useContext(MyContext);
   const [visible, setVisible] = useState(false);
 
-  console.log("store.state.shoppingCartProducts", store.state);
-
   const phoneNumber = () =>
     store.state.message
       ? config.numberPhone.a +
@@ -54,7 +52,7 @@ const ShoppingCart = () => {
         visible={visible}
       >
         <div className={style.container}>
-          <div>
+          <div className={style.main}>
             <h3 className={style.title}>
               Total de productos: {store.state.totalProducts}
             </h3>
