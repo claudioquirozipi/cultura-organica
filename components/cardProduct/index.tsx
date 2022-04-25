@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import { useContext } from "react";
-import { DataProduct, myAction, MyContext } from "../../utils/store";
+import Link from "next/link";
 
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { DataProduct, myAction, MyContext } from "../../utils/store";
 import { CardProductProps } from "./interface";
 import style from "./style.module.css";
-import Image from "next/image";
 
 const CardProduct = (props: CardProductProps) => {
   const { product } = props;
@@ -19,24 +19,17 @@ const CardProduct = (props: CardProductProps) => {
         !product.data.availability && style.cardDisable
       }`}
     >
-      {product.data.imagen.includes("http") ? (
-        <img
-          className={style.image}
-          src={product.data.imagen}
-          alt={product.data.title}
-          width={110}
-          height={110}
-        />
-      ) : (
-        <div className={style.image}>
-          <img
-            src={`/${product.data.imagen}`}
-            alt={product.data.title}
-            width={110}
-            height={110}
-          />
-        </div>
-      )}
+      <img
+        className={style.image}
+        src={
+          product.data.imagen.includes("http")
+            ? product.data.imagen
+            : `/${product.data.imagen}`
+        }
+        alt={product.data.title}
+        width={110}
+        height={110}
+      />
 
       <ul className={style.chipGroup}>
         {stringToArray(product.data.categories).map((c, i) => (
@@ -55,19 +48,19 @@ const CardProduct = (props: CardProductProps) => {
         <>
           {printAmount(store.state.shoppingCartProducts) > 0 ? (
             <div className={style.buttonContainer}>
-              <FontAwesomeIcon
+              <div
+                className={style.buttonIcon}
                 onClick={() => store.dispatch(myAction.removeProduct(product))}
-                icon={faMinus}
-                width="20px"
-                height="20px"
-              />
+              >
+                <FontAwesomeIcon icon={faMinus} width="20px" height="20px" />
+              </div>
               {printAmount(store.state.shoppingCartProducts)}
-              <FontAwesomeIcon
+              <div
+                className={style.buttonIcon}
                 onClick={() => store.dispatch(myAction.addProduct(product))}
-                icon={faPlus}
-                width="20px"
-                height="20px"
-              />
+              >
+                <FontAwesomeIcon icon={faPlus} width="20px" height="20px" />
+              </div>
             </div>
           ) : (
             <button

@@ -1,4 +1,3 @@
 export interface LayoutProps {
-    search?: boolean;
-    children: any;    
+  children: any;
 }

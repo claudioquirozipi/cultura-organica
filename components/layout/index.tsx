@@ -6,7 +6,7 @@ import Header from "../header";
 import Footer from "../footer";
 
 const Layout = (props: LayoutProps) => {
-  const { children, search } = props;
+  const { children } = props;
   return (
     <div className={style.container}>
       <Head>
@@ -15,7 +15,7 @@ const Layout = (props: LayoutProps) => {
         <link rel="icon" href="/logo.jpg" />
       </Head>
 
-      <Header search={search} />
+      <Header />
 
       <div className={style.childrenContainer}>{children}</div>
 

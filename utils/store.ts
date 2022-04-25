@@ -10,10 +10,14 @@ export interface DataProduct {
 interface InitialState {
   shoppingCartProducts: DataProduct[];
   message: string;
+  totalProducts: number;
+  totalPrice: number;
 }
 export const initialState: InitialState = {
   shoppingCartProducts: [],
   message: "",
+  totalProducts: 0,
+  totalPrice: 0,
 };
 
 const getMessage = (shoppingCartProducts: DataProduct[]) => {

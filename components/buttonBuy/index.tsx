@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Image from "next/image";
 
 import { MyContext } from "../../utils/store";
 import { config } from "../../utils/config";

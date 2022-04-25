@@ -1,0 +1,29 @@
+.popupWrapper {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popupWrapperClose {
+  display: none;
+}
+
+.popup {
+  height: 100vh;
+  width: 23rem;
+  background: var(--contrast);
+  padding: 1rem;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+}

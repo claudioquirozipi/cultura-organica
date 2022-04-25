@@ -4,14 +4,14 @@
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--background-primary);
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  background-color: var(--third);
+  box-shadow: var(--box-shadow);
   position: sticky;
   top: 0;
   z-index: 1;
 }
 
 .logo {
-  height: 3rem;
+  height: 2rem;
   cursor: pointer;
 }

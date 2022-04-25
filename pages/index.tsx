@@ -39,7 +39,7 @@ const Home: NextPage<HomeProps> = (props) => {
   }
 
   return (
-    <Layout search>
+    <Layout>
       <FilterProducts onChange={setFilter} categories={categories} />
 
       <div className={styles.container}>
@@ -47,7 +47,7 @@ const Home: NextPage<HomeProps> = (props) => {
           <CardProduct key={i} product={product} />
         ))}
       </div>
-      <ButtonBuy />
+      {store.state.totalProducts ? <ButtonBuy /> : null}
     </Layout>
   );
 
